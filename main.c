@@ -1,21 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
 int main(int argc, char *argv[]) 
 {
 	FILE *data;
-	unsigned int sarradas;
+	unsigned short int sarradas = 0;
 	char input;
 	
 	printf("\n\tWelcome to the Unesp Bright River BCC 2016 Sarrada Counter\n");
 	printf("\tType 's' to increase the number of sarradas\n");
 	printf("\tType 'q' to quit\n");
+	scanf(" %c",&input);
 	
-		do
+		while((input != 'q') || (input != 'Q'))
 		{
-			
-		}while((input != 'q' ||) || (input != 'Q'));
+			if((input == 's') || (input == 'S'))
+				sarradas++;
+					
+			printf("\tSarradas total: %hu\n",sarradas);
+			scanf(" %c",&input);		
+		}
+		
+	printf("Thank you! Have a nice day free of sarradas\n");
+		
 	return 0;
 }
