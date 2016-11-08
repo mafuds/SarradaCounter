@@ -12,13 +12,13 @@ int main(int argc, char *argv[])
 	printf("\tType 'q' to quit\n");
 	scanf(" %c",&input);
 	
-		while((input != 'q') || (input != 'Q'))
+		while((input != 'q') && (input != 'Q'))
 		{
 			if((input == 's') || (input == 'S'))
 				sarradas++;
 					
 			printf("\tSarradas total: %hu\n",sarradas);
-			scanf(" %c",&input);		
+			scanf(" %c",&input);
 		}
 		
 	printf("Thank you! Have a nice day free of sarradas\n");
