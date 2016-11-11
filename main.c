@@ -34,8 +34,6 @@ int main(int argc, char *argv[])
 	printf("\tType 'q' to quit\n");
 	scanf(" %c",&input);
 	
-	// HERE IT NEEDS THE INPUT VERIFIER TOO!!!
-	
 		// Loop that controls the program. While the user types a sarrada command 's', it counts. If the command is 'q', the program will end
 		while((input != 'q') && (input != 'Q'))
 		{
@@ -64,17 +62,11 @@ int main(int argc, char *argv[])
 				fprintf(data, "\nSarrada details: %s", details);
 				fprintf(data, "\nTarget: %s", target);	
 			}
+			else
+				printf("\n\tInput not accepted. Please, enter a valid input (s for sarrada | q to quit)");
 					
 			printf("\n\tNew input: ");
-			scanf(" %c",&input);
-				
-				// Input verifier
-				while(((input != 'q') && (input != 'Q')) || (input == 's') || (input == 'S')) // NOT WORKING FOR S!!!!
-				{
-					printf("\n\tInput not accepted. Please, enter a valid input (s for sarrada | q to quit)");
-					printf("\n\tInput: ");
-					scanf(" %c",&input);
-				}
+			scanf(" %c",&input);				
 		}
 	
 	// Registering the total of sarradas to the file
