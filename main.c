@@ -26,9 +26,11 @@ int main(int argc, char *argv[])
 			if((input == 's') || (input == 'S'))
 				sarradas++;
 					
-			printf("\tSarradas total: %hu\n",sarradas);
+			printf("\tSarradas total: %hu\n", sarradas);
 			scanf(" %c",&input);
 		}
+	
+	fprintf(data, "Sarradas total: %hu", sarradas);
 		
 	printf("\nThank you! Have a nice day free of sarradas\n");
 	
