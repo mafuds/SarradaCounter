@@ -20,14 +20,16 @@ int main(int argc, char *argv[])
 			printf("Nao foi possivel abrir o arquivo de sarradas");
 			exit(1);	
 		}
-		
-		// Getting time from system
-		time(&rawtime);
-		timeinfo = localtime(&rawtime);
-		
-		// Registering time to file (it's a new file)
-		fprintf(data, "%s", asctime(timeinfo));
 	}
+	
+	// Getting time from system 
+	// WE STILL NEED TO MAKE A WAY THIS: IF WE PUT ON THE IF RIGHT ABOVE, IT WRITES THE TIME FOR A NEW FILE, BUT, FOR AN EXISTING ONE, IT WILL BE BLANK
+	// THIS WAY, IT OVERWRITES EVERY TIME IT OPENS THE FILE
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+		
+	// Registering time to file (it's a new file)
+	fprintf(data, "%s", asctime(timeinfo));
 	
 	printf("\n\tWelcome to the Unesp Bright River BCC 2016 Sarrada Counter\n");
 	printf("\tType 's' to increase the number of sarradas\n");
