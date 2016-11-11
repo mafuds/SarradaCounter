@@ -20,6 +20,13 @@ int main(int argc, char *argv[])
 			printf("Nao foi possivel abrir o arquivo de sarradas");
 			exit(1);	
 		}
+		
+		// Getting time from system
+		time(&rawtime);
+		timeinfo = localtime(&rawtime);
+		
+		// Registering time to file (it's a new file)
+		fprintf(data, "%s", asctime(timeinfo));
 	}
 	
 	printf("\n\tWelcome to the Unesp Bright River BCC 2016 Sarrada Counter\n");
@@ -38,21 +45,18 @@ int main(int argc, char *argv[])
 				printf("\n\tPlease, register the target: ");
 				fflush(stdin);
 				gets(target);
-				sarradas++;	
+				sarradas++;
+				
+				// Registers the latest sarrada to the file
+				fprintf(data, "\nSarrada details: %s", details);
+				fprintf(data, "\nTarget: %s", target);	
 			}
 					
 			printf("\n\tNew input: ");
 			scanf(" %c",&input);
 		}
 	
-	// Getting time from system
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	
-	// Registering time and sarradas to file
-	fprintf(data, "%s", asctime(timeinfo));
-	fprintf(data, "Sarrada details: %s", details);
-	fprintf(data, "\nTarget: %s", target);
+	// Registering the total of sarradas to the file
 	fprintf(data, "\nSarradas total: %hu", sarradas);
 		
 	printf("\nThank you! Have a nice day free of sarradas\n");
