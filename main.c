@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	time_t rawtime;
 	struct tm *timeinfo;
 	//
-	unsigned short int sarradas = 0;
+	unsigned short int sarradas = 0, level;
 	char input, details[50], target[20];
 	
 	// If there's an existing file, opens it. Otherwise, creates it
@@ -44,10 +44,21 @@ int main(int argc, char *argv[])
 				printf("\n\tPlease, detail the sarrada: ");
 				fflush(stdin);
 				gets(details);
+				printf("\n\tPlease, detail the level of the sarrada (from 1 - Normal to 10 - HE COMPLETELY F*CKED UP): "); // because there are different levels, so we need to count differently
+				scanf("%hu",&level);
+				
+					while((level < 1) || (level > 10))
+					{
+						printf("\n\tLevel not accepted. Please, enter a valid level (from 1 to 10)");
+						printf("\n\tLevel: ");
+						scanf("%hu",&level);
+					}
+					
 				printf("\n\tPlease, register the target: ");
 				fflush(stdin);
 				gets(target);
-				sarradas++;
+				
+				sarradas += level;
 				
 				// Registers the latest sarrada to the file
 				fprintf(data, "\nSarrada details: %s", details);
