@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define DETAILS_FIELD 50
+#define TARGET_FIELD  20
+
 int main(int argc, char *argv[]) 
 {
 	FILE *data;
@@ -10,7 +13,7 @@ int main(int argc, char *argv[])
 	struct tm *timeinfo;
 	//
 	unsigned short int sarradas = 0, level;
-	char input, details[50], target[20];
+	char input, details[DETAILS_FIELD], target[TARGET_FIELD];
 	
 	// If there's an existing file, opens it. Otherwise, creates it
 	if((data = fopen("sarradas.txt","r+")) == 0)
@@ -21,10 +24,10 @@ int main(int argc, char *argv[])
 			exit(1);	
 		}
 	}
-	
-	// Getting time from system 
+	 
 	// WE STILL NEED TO MAKE A WAY THIS: IF WE PUT ON THE IF RIGHT ABOVE, IT WRITES THE TIME FOR A NEW FILE, BUT, FOR AN EXISTING ONE, IT WILL BE BLANK
 	// THIS WAY, IT OVERWRITES EVERY TIME IT OPENS THE FILE
+	// Getting time from system
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
 		
