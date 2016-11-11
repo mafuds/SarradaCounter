@@ -5,10 +5,12 @@
 int main(int argc, char *argv[]) 
 {
 	FILE *data;
+	// Variables to get time from system (in order to register to file)
 	time_t rawtime;
 	struct tm *timeinfo;
+	//
 	unsigned short int sarradas = 0;
-	char input;
+	char input, details[50], target[20];
 	
 	// If there's an existing file, opens it. Otherwise, creates it
 	if((data = fopen("sarradas.txt","r+")) == 0)
@@ -28,10 +30,18 @@ int main(int argc, char *argv[])
 		// Loop that controls the program. While the user types a sarrada command 's', it counts. If the command is 'q', the program will end
 		while((input != 'q') && (input != 'Q'))
 		{
-			if((input == 's') || (input == 'S'))
-				sarradas++;
+			if((input == 's') || (input == 'S')) // Beeing a sarrada, gets details and target
+			{
+				printf("\n\tPlease, detail the sarrada: ");
+				fflush(stdin);
+				gets(details);
+				printf("\n\tPlease, register the target: ");
+				fflush(stdin);
+				gets(target);
+				sarradas++;	
+			}
 					
-			printf("\tSarradas total: %hu\n", sarradas);
+			printf("\n\tNew input: ");
 			scanf(" %c",&input);
 		}
 	
@@ -41,7 +51,9 @@ int main(int argc, char *argv[])
 	
 	// Registering time and sarradas to file
 	fprintf(data, "%s", asctime(timeinfo));
-	fprintf(data, "Sarradas total: %hu", sarradas);
+	fprintf(data, "Sarrada details: %s", details);
+	fprintf(data, "\nTarget: %s", target);
+	fprintf(data, "\nSarradas total: %hu", sarradas);
 		
 	printf("\nThank you! Have a nice day free of sarradas\n");
 	
