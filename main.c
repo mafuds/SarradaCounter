@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	time_t rawtime;
 	struct tm *timeinfo;
 	//
-	unsigned short int sarradas = 0, level;
+	unsigned short int sarradas = 0, level, memesTotal = 0,memeType, meme1 = 0;
 	char input, details[DETAILS_FIELD], target[TARGET_FIELD];
 
 	// If there's an existing file, opens it. Otherwise, creates it
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	{
 		if((data = fopen("sarradas.txt","w+")) == 0)
 		{
-			printf("Nao foi possivel abrir o arquivo de sarradas");
+			printf("It was not possible to open the sarradas' file");
 			exit(1);
 		}
 	}
@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 	printf("\n\tWelcome to the Unesp Bright River BCC 2016 Sarrada Counter\n");
 	printf("\tType 's' to increase the number of sarradas\n");
 	printf("\tType 'q' to quit\n");
+	printf("\tType 'm' to increase the number of memes\n");
 	scanf(" %c",&input);
 
 		// Loop that controls the program. While the user types a sarrada command 's', it counts. If the command is 'q', the program will end
@@ -66,15 +67,41 @@ int main(int argc, char *argv[])
 				fprintf(data, "\nTarget: %s\n\n", target);
 				/***********************************************************************************/
 			}
+			else if((input == 'm') || (input == 'M')) // Beeing a meme, gets details
+            {
+                printf("\n\tPlease, select the meme:");
+                printf("\n\t1 - WOWOWOWOWOWOWOOOWOOOOOWOWOOOW");
+                printf("\n\tYour option: ");
+                scanf("%hu",&memeType);
+
+                // Getting time from system
+                time(&rawtime);
+                timeinfo = localtime(&rawtime);
+
+                switch(memeType)
+                {
+                    case 1:
+                        meme1++;
+
+                        // Registering time and meme type to file
+                        fprintf(data, "%s", asctime(timeinfo));
+                        fprintf(data, "\nWOWOWOWOWOWOWOOOWOOOOOWOWOOOW: %hu\n", meme1);
+
+                        break;
+                }
+
+                memesTotal++;
+            }
 			else
-				printf("\n\tInput not accepted. Please, enter a valid input (s for sarrada | q to quit)");
+				printf("\n\tInput not accepted. Please, enter a valid input (s for sarrada | m for meme | q to quit)");
 
 			printf("\n\tNew input: ");
 			scanf(" %c",&input);
 		}
 
-	// Registering the total of sarradas to the file
+	// Registering the total of sarradas and memes to the file
 	fprintf(data, "\nSarradas total: %hu", sarradas);
+	fprintf(data, "\nMemes total: %hu", memesTotal);
 
 	printf("\nThank you! Have a nice day free of sarradas\n");
 
