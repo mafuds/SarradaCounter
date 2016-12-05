@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	time_t rawtime;
 	struct tm *timeinfo;
 	//
-	unsigned short int sarradas = 0, level, memesTotal = 0,memeType, meme1 = 0;
+	unsigned short int sarradas = 0, level, memesTotal = 0,memeType, meme1 = 0, meme2 = 0;
 	char input, details[DETAILS_FIELD], target[TARGET_FIELD];
 
 	// If there's an existing file, opens it. Otherwise, creates it
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
                 timeinfo = localtime(&rawtime);
 
                 // Registering time and latest sarrada to file
-                fprintf(data, "%s", asctime(timeinfo));
+                fprintf(data, "\n%s", asctime(timeinfo));
 				fprintf(data, "\nSarrada details: %s", details);
 				fprintf(data, "\nTarget: %s\n\n", target);
 				/***********************************************************************************/
@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
             {
                 printf("\n\tPlease, select the meme:");
                 printf("\n\t1 - WOWOWOWOWOWOWOOOWOOOOOWOWOOOW");
+                printf("\n\t2 - BIzarro");
                 printf("\n\tYour option: ");
                 scanf("%hu",&memeType);
 
@@ -84,8 +85,17 @@ int main(int argc, char *argv[])
                         meme1++;
 
                         // Registering time and meme type to file
-                        fprintf(data, "%s", asctime(timeinfo));
+                        fprintf(data, "\n%s", asctime(timeinfo));
                         fprintf(data, "\nWOWOWOWOWOWOWOOOWOOOOOWOWOOOW: %hu\n", meme1);
+
+                        break;
+
+                    case 2:
+                        meme2++;
+
+                        // Registering time and meme type to file
+                        fprintf(data, "%s", asctime(timeinfo));
+                        fprintf(data, "\nBIzarro: %hu\n", meme2);
 
                         break;
                 }
