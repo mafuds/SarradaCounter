@@ -1,0 +1,12 @@
+Mon Dec 05 13:58:50 2016
+
+Sarrada details: oi
+Target: eu
+
+Mon Dec 05 13:58:57 2016
+
+Sarrada details: oidois
+Target: eu
+
+
+Sarradas total: 6
